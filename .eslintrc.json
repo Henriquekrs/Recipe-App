@@ -1,3 +1,56 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "@trybe/eslint-config-frontend/typescript",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-alert": "off",
+    "quotes": ["error", "single"],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "bracketSpacing": true
+      }
+    ],
+    "react/jsx-curly-spacing": [
+      "error",
+      {
+        "when": "always",
+        "children": true
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/tests/**/*.js"
+      ],
+      "rules": {
+        "max-len": [
+          "error",
+          {
+            "code": 90,
+            "ignoreComments": true,
+            "ignoreUrls": true,
+            "ignoreRegExpLiterals": true,
+            "ignoreStrings": true
+          }
+        ],
+        "max-lines": [
+          "off"
+        ],
+        "no-magic-numbers": [
+          "off"
+        ]
+      }
+    }
+  ]
 }
