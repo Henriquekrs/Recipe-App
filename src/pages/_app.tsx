@@ -3,7 +3,7 @@ import HeaderBar from '@/components/Header';
 import { GlobalProvider } from '@/context/GlobalProvider';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import '../styles/globals.css';
+import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
