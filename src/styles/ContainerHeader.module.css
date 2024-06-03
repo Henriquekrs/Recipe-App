@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    position: fixed;
+    height: 8vh;
+    top: 0;
+    z-index: 1000;
+    width: 100vw;
+    flex-direction: row;
+    border: 2px solid #d8ce00;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section {
+    display: flex;
+    gap: 2rem;
+    text-decoration: none;
+}
