@@ -10,14 +10,18 @@ const RecommendedRecipes = () => {
   
   useEffect(() => {
     if (router.pathname.includes('meals')) {
-      getDrinks();
+      getDrinks('');
     } else if (router.pathname.includes('drinks')) {
-      getMeals();
+      getMeals('');
     }
   }, []);
 
   const handleClickRecipe = (recipeId: string) => {
-    router.push(`${router.pathname}/${recipeId}`);
+    if (router.pathname.includes('meals')) {
+      router.push(`/drinks/${recipeId}`);
+    } else if (router.pathname.includes('drinks')) {
+      router.push(`/meals/${recipeId}`);
+    }
   };
 
   return (

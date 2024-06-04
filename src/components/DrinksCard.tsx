@@ -9,7 +9,7 @@ const DrinksCards = () => {
   const { getDrinks, recipes } = useGlobalContext();
 
   useEffect(() => {
-    getDrinks();
+    getDrinks('');
   }, []);
 
   if (!recipes.length) {

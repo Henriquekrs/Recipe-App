@@ -16,7 +16,7 @@ const FiltersMeals = () => {
   const handleClickFilter = (e: string) => {
     if (activeFilter === e) {
       setActiveFilter(null);
-      getMeals();
+      getMeals('');
     } else {
       setActiveFilter(e);
       getFilteredRecipe(true, e);

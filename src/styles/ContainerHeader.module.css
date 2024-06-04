@@ -16,3 +16,58 @@
     gap: 2rem;
     text-decoration: none;
 }
+
+/* Adicione estes estilos ao seu arquivo CSS */
+
+.popup {
+    position: absolute;
+    top: 30px;
+    /* ajuste conforme necessário */
+    right: 120px;
+    /* ajuste conforme necessário */
+    background: #DEDBDF;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.10), 0 6px 6px rgba(0, 0, 0, 0.16);
+    width: 250px;
+    padding: 10px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(-20px);
+}
+
+.popupVisible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.popupContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    margin: 10px 0;
+}
+
+.option a {
+    text-decoration: none;
+    color: #444247;
+}
+
+.option a:hover {
+    color: #777579;
+}
+
+.closeButton {
+    background: #BA87F9;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+}
+
+.closeButton:hover {
+    background: #CB9AFB;
+}
