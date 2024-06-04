@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    border: 2px solid #e77205;
+    align-items: center;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    gap: 10px;
+    list-style: none;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #e77205;
+    border-radius: 4px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.carouselItem {
+    min-width: 200px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.carouselItem:hover {
+    transform: scale(1.05);
+}
+
+.carouselItem img {
+    border-radius: 10px;
+}
+
+.carouselItem p {
+    text-align: center;
+    margin-top: 5px;
+}
