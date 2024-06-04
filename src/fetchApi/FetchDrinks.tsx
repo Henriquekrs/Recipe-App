@@ -1,5 +1,6 @@
 const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
-const URLFILTER = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
+const URLDETAILS = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
+const URLFILTER = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c='
 
 export const fetchDrinks = async () => {
   const response = await fetch(URL);
@@ -7,8 +8,14 @@ export const fetchDrinks = async () => {
   return data.drinks.slice(0, 10);
 };
 
-export const filterDrinks = async (id: string) => {
-  const response = await fetch(`${URLFILTER}${id}`);
+export const detailsDrinks = async (id: string) => {
+  const response = await fetch(`${URLDETAILS}${id}`);
   const data = await response.json();
   return data.drinks;
 };
+
+export const filterDrinks = async (idFilter: string) => {
+  const response = await fetch(`${URLFILTER}${idFilter}`);
+  const data = await response.json();
+  return data.drinks.slice(0, 10);
+}

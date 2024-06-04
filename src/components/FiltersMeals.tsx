@@ -6,12 +6,26 @@ import chicken from '@/assets/Chicken.svg';
 import breakfast from '@/assets/Breakfast.svg';
 import dessert from '@/assets/Dessert.svg';
 import styles from '@/styles/ContainerFilter.module.css'
+import { useGlobalContext } from '@/context/GlobalProvider';
+import { useState } from 'react';
 
 const FiltersMeals = () => {
+  const { getFilteredRecipe, getMeals } = useGlobalContext();
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+  const handleClickFilter = (e: string) => {
+    if (activeFilter === e) {
+      setActiveFilter(null);
+      getMeals();
+    } else {
+      setActiveFilter(e);
+      getFilteredRecipe(true, e);
+    }
+  }
   return (
     <div className={styles.container}>
       <ul>
-          <li>
+          <li id='all'>
             <Image
               width={50}
               height={50}
@@ -20,7 +34,7 @@ const FiltersMeals = () => {
             />
             <p>All</p>
           </li>
-          <li>
+          <li id='Beef' onClick={(e) => handleClickFilter(e.currentTarget.id)}>
             <Image
               width={50}
               height={50}
@@ -29,7 +43,7 @@ const FiltersMeals = () => {
             />
             <p>Beef</p>
           </li>
-          <li>
+          <li id='Goat' onClick={(e) => handleClickFilter(e.currentTarget.id)}>
             <Image
               width={50}
               height={50}
@@ -38,7 +52,7 @@ const FiltersMeals = () => {
             />
             <p>Goat</p>
           </li>
-          <li>
+          <li id='Chicken' onClick={(e) => handleClickFilter(e.currentTarget.id)}>
             <Image
               width={50}
               height={50}
@@ -47,7 +61,7 @@ const FiltersMeals = () => {
             />
             <p>Chicken</p>
           </li>
-          <li>
+          <li id='Breakfast' onClick={(e) => handleClickFilter(e.currentTarget.id)}>
             <Image
               width={50}
               height={50}
@@ -56,7 +70,7 @@ const FiltersMeals = () => {
             />
             <p>Breakfast</p>
           </li>
-          <li>
+          <li id='Dessert' onClick={(e) => handleClickFilter(e.currentTarget.id)}>
             <Image
               width={50}
               height={50}

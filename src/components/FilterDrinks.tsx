@@ -6,12 +6,26 @@ import Shake from '@/assets/Shake.svg';
 import Other from '@/assets/Other.svg';
 import Cocoa from '@/assets/Cocoa.svg';
 import styles from '@/styles/ContainerFilter.module.css'
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { useState } from "react";
 
 const FilterDrinks = () => {
+  const { getFilteredRecipe, getDrinks } = useGlobalContext();
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+  const handleClickFilter = (e: string) => {
+    if (activeFilter === e) {
+      setActiveFilter(null);
+      getDrinks();
+    } else {
+      setActiveFilter(e);
+      getFilteredRecipe(false, e);
+    }
+  }
   return (
       <div className={styles.container}>
         <ul>
-            <li>
+            <li id="all">
               <Image
                 width={50}
                 height={50}
@@ -20,7 +34,7 @@ const FilterDrinks = () => {
               />
               <p>All</p>
             </li>
-            <li>
+            <li id="ordinary_drink" onClick={ (e) => handleClickFilter(e.currentTarget.id) }>
               <Image
                 width={50}
                 height={50}
@@ -29,7 +43,7 @@ const FilterDrinks = () => {
               />
               <p>Ordinary Drink</p>
             </li>
-            <li>
+            <li id="cocktail" onClick={ (e) => handleClickFilter(e.currentTarget.id) }>
               <Image
                 width={50}
                 height={50}
@@ -38,7 +52,7 @@ const FilterDrinks = () => {
               />
               <p>Cocktail</p>
             </li>
-            <li>
+            <li id="shake" onClick={ (e) => handleClickFilter(e.currentTarget.id) }>
               <Image
                 width={50}
                 height={50}
@@ -47,7 +61,7 @@ const FilterDrinks = () => {
               />
               <p>Shake</p>
             </li>
-            <li>
+            <li id="other_/_unknown" onClick={ (e) => handleClickFilter(e.currentTarget.id) }>
               <Image
                 width={50}
                 height={50}
@@ -56,7 +70,7 @@ const FilterDrinks = () => {
               />
               <p>Other/Unknow</p>
             </li>
-            <li>
+            <li id="cocoa" onClick={ (e) => handleClickFilter(e.currentTarget.id) }>
               <Image
                 width={50}
                 height={50}

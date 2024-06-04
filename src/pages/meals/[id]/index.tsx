@@ -10,12 +10,12 @@ import { useEffect } from "react";
 
 const RecipeDetails = () => {
   const route = useRouter();
-  const { getFilteredRecipe } = useGlobalContext();
+  const { getDetailsRecipe } = useGlobalContext();
   const { id } = route.query
 
   useEffect(() => {
     if(id) {
-      getFilteredRecipe(true, id as string);
+      getDetailsRecipe(true, id as string);
     }
   }, [id]);
 

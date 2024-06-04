@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import GlobalContext from './GlobalState';
-import { fetchMeals, filterMeals } from '@/fetchApi/FetchMeals';
-import { fetchDrinks, filterDrinks } from '@/fetchApi/FetchDrinks';
+import { detailsMeals, fetchMeals, filterMeals } from '@/fetchApi/FetchMeals';
+import { detailsDrinks, fetchDrinks, filterDrinks } from '@/fetchApi/FetchDrinks';
 
 export type ProviderPropsType = {
   children: React.ReactNode;
@@ -21,7 +21,8 @@ export type GlobalContextType = {
   getMeals: () => Promise<any>;
   getDrinks: () => Promise<any>;
   filteredRecipe: any;
-  getFilteredRecipe: (isMeal: boolean, id: string) => Promise<void>;
+  getDetailsRecipe: (isMeal: boolean, id: string) => Promise<void>;
+  getFilteredRecipe: (isMeal: boolean, idFilter: string) => Promise<void>;
 };
 
 const GlobalProvider = ({ children }: ProviderPropsType) => {
@@ -30,7 +31,6 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
   const [recipes, setRecipes] = useState<any[]>([]);
   const [filteredRecipe, setFilteredRecipe] = useState<any>({});
   console.log(recipes, ' <== recipes provider');
-  console.log(filteredRecipe, ' <== filteredRecipe provider');
 
   const getMeals = async () => {
     const data = await fetchMeals();
@@ -42,14 +42,33 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
     setRecipes(data);
   };
 
-  const getFilteredRecipe = async (isMeal: boolean, id: string) => {
-    const data = isMeal ? await filterMeals(id) : await filterDrinks(id)
+  const getDetailsRecipe = async (isMeal: boolean, id: string) => {
+    const data = isMeal ? await detailsMeals(id) : await detailsDrinks(id)
     setFilteredRecipe(data[0]);
   };
 
+  const getFilteredRecipe = async (isMeal: boolean, idFilter: string) => {
+    const data = isMeal ? await filterMeals(idFilter) : await filterDrinks(idFilter);
+    setRecipes(data);
+  }
+  
+
+
   return (
     <GlobalContext.Provider
-      value={{ recipes, setRecipes, email, setEmail, password, setPassword, getMeals, getDrinks, getFilteredRecipe, filteredRecipe }}
+      value={{
+        recipes, 
+        setRecipes,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        getMeals,
+        getDrinks,
+        getDetailsRecipe,
+        filteredRecipe,
+        getFilteredRecipe
+      }}
     >
       {children}
     </GlobalContext.Provider>
