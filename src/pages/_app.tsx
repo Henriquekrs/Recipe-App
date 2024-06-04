@@ -7,7 +7,9 @@ import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const hideHeaderAndFooter = router.pathname === '/login';
+
+  // Check if the current route is the login page or a details page with an ID parameter
+  const hideHeaderAndFooter = router.pathname === '/login' || (router.pathname.includes('/meals') && router.query.id) || (router.pathname.includes('/drinks') && router.query.id);
 
   return (
     <GlobalProvider>

@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import GlobalContext from './GlobalState';
-import { fetchMeals } from '@/fetchApi/FetchMeals';
-import { fetchDrinks } from '@/fetchApi/FetchDrinks';
+import { fetchMeals, filterMeals } from '@/fetchApi/FetchMeals';
+import { fetchDrinks, filterDrinks } from '@/fetchApi/FetchDrinks';
 
 export type ProviderPropsType = {
   children: React.ReactNode;
@@ -21,7 +21,7 @@ export type GlobalContextType = {
   getMeals: () => Promise<any>;
   getDrinks: () => Promise<any>;
   filteredRecipe: any;
-  getFilteredRecipe: (idRecipe: string) => void;
+  getFilteredRecipe: (isMeal: boolean, id: string) => Promise<void>;
 };
 
 const GlobalProvider = ({ children }: ProviderPropsType) => {
@@ -31,7 +31,6 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
   const [filteredRecipe, setFilteredRecipe] = useState<any>({});
   console.log(recipes, ' <== recipes provider');
   console.log(filteredRecipe, ' <== filteredRecipe provider');
-  
 
   const getMeals = async () => {
     const data = await fetchMeals();
@@ -43,9 +42,9 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
     setRecipes(data);
   };
 
-  const getFilteredRecipe = (idRecipe: string) => {
-    const filtered = recipes.find((recipe) => recipe.idMeal === idRecipe || recipe.idDrink === idRecipe);
-    setFilteredRecipe(filtered);
+  const getFilteredRecipe = async (isMeal: boolean, id: string) => {
+    const data = isMeal ? await filterMeals(id) : await filterDrinks(id)
+    setFilteredRecipe(data[0]);
   };
 
   return (

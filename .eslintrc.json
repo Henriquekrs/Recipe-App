@@ -1,32 +1,7 @@
 {
-  "extends": [
-    "@trybe/eslint-config-frontend/typescript",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended"
-  ],
+  "extends": "@trybe/eslint-config-frontend/typescript",
   "rules": {
-    "no-alert": "off",
-    "quotes": ["error", "single"],
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "bracketSpacing": true
-      }
-    ],
-    "react/jsx-curly-spacing": [
-      "error",
-      {
-        "when": "always",
-        "children": true
-      }
-    ]
-  },
-  "scripts": {
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
+    "no-alert": "off"
   },
   "overrides": [
     {
