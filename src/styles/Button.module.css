@@ -5,8 +5,13 @@
     width: 100vw;
 }
 
-.container button {
+.container a {
     background-color: #FCC436;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -15,7 +20,7 @@
     width: 336px;
     height: 40px;
     font-family: "Epilogue", sans-serif;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 14.35px;
     letter-spacing: 0.03em;

@@ -2,9 +2,10 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 import Image from "next/image";
 import { useEffect } from "react";
 import styles from '@/styles/ContainerCards.module.css';
-import router from 'next/router';
+import { useRouter } from "next/router";
 
 const DrinksCards = () => {
+  const router = useRouter();
   const { getDrinks, recipes } = useGlobalContext();
 
   useEffect(() => {

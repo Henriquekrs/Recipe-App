@@ -2,7 +2,6 @@ import ButtonStart from "@/components/ButtonStart";
 import RecipeIngredients from "@/components/IngredientsRecipe";
 import InstructionsRecipe from "@/components/InstructionsRecipe";
 import RecommendedRecipes from "@/components/RecommendedRecipe";
-import RecommendedFilter from "@/components/RecommendedRecipe";
 import ThumbRecipe from "@/components/ThumbRecipe";
 import VideoRecipe from "@/components/VideoRecipe";
 import { useGlobalContext } from "@/context/GlobalProvider";

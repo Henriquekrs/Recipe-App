@@ -1,10 +1,11 @@
 import { useGlobalContext } from "@/context/GlobalProvider";
 import Image from "next/image";
-import router from 'next/router';
 import { useEffect } from "react";
 import styles from '@/styles/ContaineRecommendations.module.css';
+import { useRouter } from "next/router";
 
 const RecommendedRecipes = () => {
+  const router = useRouter();
   const { getMeals, getDrinks, recipes } = useGlobalContext();
   
   useEffect(() => {
