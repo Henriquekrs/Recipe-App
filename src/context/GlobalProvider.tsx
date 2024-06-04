@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import GlobalContext from './GlobalState';
-import { detailsMeals, fetchMeals, filterMeals } from '@/fetchApi/FetchMeals';
-import { detailsDrinks, fetchDrinks, filterDrinks } from '@/fetchApi/FetchDrinks';
+import { detailsMeals, fetchMeals, filterCategoryMeals, filterMealFirstLetter, filterMealIngredient } from '@/fetchApi/FetchMeals';
+import { detailsDrinks, fetchDrinks, filterCategoryDrinks, filterDrinkFirstLetter, filterDrinkIngredient } from '@/fetchApi/FetchDrinks';
 
 export type ProviderPropsType = {
   children: React.ReactNode;
@@ -18,11 +18,13 @@ export type GlobalContextType = {
   setPassword: (password: string) => void;
   recipes: any[];
   setRecipes: (recipes: any[]) => void;
-  getMeals: () => Promise<any>;
-  getDrinks: () => Promise<any>;
+  getMeals: (name: string) => Promise<any>;
+  getDrinks: (name: string) => Promise<any>;
   filteredRecipe: any;
   getDetailsRecipe: (isMeal: boolean, id: string) => Promise<void>;
   getFilteredRecipe: (isMeal: boolean, idFilter: string) => Promise<void>;
+  getByIngredients: (isMeal: boolean, ingredient: string) => Promise<void>;
+  getByFirstLetter: (isMeal: boolean, firstLetter: string) => Promise<void>;
 };
 
 const GlobalProvider = ({ children }: ProviderPropsType) => {
@@ -32,13 +34,13 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
   const [filteredRecipe, setFilteredRecipe] = useState<any>({});
   console.log(recipes, ' <== recipes provider');
 
-  const getMeals = async () => {
-    const data = await fetchMeals();
+  const getMeals = async (name: string) => {
+    const data = await fetchMeals(name);
     setRecipes(data);
   };
 
-  const getDrinks = async () => {
-    const data = await fetchDrinks();
+  const getDrinks = async (name: string) => {
+    const data = await fetchDrinks(name);
     setRecipes(data);
   };
 
@@ -48,11 +50,19 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
   };
 
   const getFilteredRecipe = async (isMeal: boolean, idFilter: string) => {
-    const data = isMeal ? await filterMeals(idFilter) : await filterDrinks(idFilter);
+    const data = isMeal ? await filterCategoryMeals(idFilter) : await filterCategoryDrinks(idFilter);
     setRecipes(data);
   }
   
+  const getByIngredients = async (isMeal: boolean, ingredient: string) => {
+    const data = isMeal ? await filterMealIngredient(ingredient) : await filterDrinkIngredient(ingredient);
+    setRecipes(data);
+  };
 
+  const getByFirstLetter = async (isMeal: boolean, firstLetter: string) => {
+    const data = isMeal ? await filterMealFirstLetter(firstLetter) : await filterDrinkFirstLetter(firstLetter);
+    setRecipes(data);
+  };
 
   return (
     <GlobalContext.Provider
@@ -67,7 +77,9 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
         getDrinks,
         getDetailsRecipe,
         filteredRecipe,
-        getFilteredRecipe
+        getFilteredRecipe,
+        getByIngredients,
+        getByFirstLetter
       }}
     >
       {children}
