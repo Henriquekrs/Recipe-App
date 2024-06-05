@@ -1,8 +1,11 @@
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { recipeIngredientType } from "@/types/FiltersType";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const IngredientsInProgress = () => {
+  const router = useRouter();
+  const { id } = router.query;
   const { filteredRecipe } = useGlobalContext();
 
   const getCombinedIngredients = (recipe: recipeIngredientType) => {
@@ -26,14 +29,44 @@ const IngredientsInProgress = () => {
 
   const ingredients = getCombinedIngredients(filteredRecipe);
 
-  const [checkedIngredients, setCheckedIngredients] = useState(
-    ingredients.map(() => false)
+  const [checkedIngredients, setCheckedIngredients] = useState<boolean[]>(
+    new Array(ingredients.length).fill(false)
   );
+
+  useEffect(() => {
+    const savedProgress = JSON.parse(localStorage.getItem('ingredientsInProgress') || '[]');
+    const recipeInProgress = savedProgress.find((recipe: { id: string }) => recipe.id === id);
+    if (recipeInProgress) {
+      setCheckedIngredients(recipeInProgress.ingredients.map((ingredient: string) => ingredients.includes(ingredient)));
+    }
+  }, [id, ingredients.length]);
 
   const handleCheckboxChange = (index: number) => {
     const updatedCheckedIngredients = [...checkedIngredients];
     updatedCheckedIngredients[index] = !updatedCheckedIngredients[index];
     setCheckedIngredients(updatedCheckedIngredients);
+    saveProgressToLocalStorage(updatedCheckedIngredients);
+  };
+
+  const saveProgressToLocalStorage = (checkedIngredients: boolean[]) => {
+    const savedProgress = JSON.parse(localStorage.getItem('ingredientsInProgress') || '[]');
+    const updatedIngredients = ingredients.filter((_, idx) => checkedIngredients[idx]);
+
+    const recipeIndex = savedProgress.findIndex((recipe: { id: string }) => recipe.id === id);
+
+    if (updatedIngredients.length > 0) {
+      if (recipeIndex > -1) {
+        savedProgress[recipeIndex].ingredients = updatedIngredients;
+      } else {
+        savedProgress.push({ id, ingredients: updatedIngredients });
+      }
+    } else {
+      if (recipeIndex > -1) {
+        savedProgress.splice(recipeIndex, 1);
+      }
+    }
+
+    localStorage.setItem('ingredientsInProgress', JSON.stringify(savedProgress));
   };
 
   return (

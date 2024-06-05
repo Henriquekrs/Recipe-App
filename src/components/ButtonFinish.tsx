@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 const ButtonFinish = () => {
   const router = useRouter();
   const { filteredRecipe } = useGlobalContext();
-  console.log(filteredRecipe, '<== buttonFinish');
   
   const { id } = router.query;
   const isMealRoute = router.pathname.includes('meals');

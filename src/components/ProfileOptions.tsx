@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 const ProfileOptions = () => {
   const { email } = useGlobalContext();
-  console.log(email, '<== email component');
 
   return (
     <div className={styles.container}>

@@ -32,7 +32,7 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
   const [password, setPassword] = useState<string>('');
   const [recipes, setRecipes] = useState<any[]>([]);
   const [filteredRecipe, setFilteredRecipe] = useState<any>({});
-  console.log(email, '<== email provider');
+  console.log(filteredRecipe, '<== recipe provider');
   
   
   const getMeals = async (name: string) => {
