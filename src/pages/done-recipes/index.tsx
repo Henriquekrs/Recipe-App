@@ -1,9 +1,9 @@
+import DoneRecipesCards from "@/components/DoneRecipesCards";
+
 const DoneRecipes = () => {
   return (
     <div>
-      <h1>
-        Done Recipes
-      </h1>
+      <DoneRecipesCards />
     </div>
   )
 };

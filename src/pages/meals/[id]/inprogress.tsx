@@ -1,3 +1,4 @@
+import ButtonFinish from "@/components/ButtonFinish";
 import IngredientsInProgress from "@/components/IngredientsInProgress";
 import InstructionsRecipe from "@/components/InstructionsRecipe";
 import ThumbRecipe from "@/components/ThumbRecipe";
@@ -10,6 +11,7 @@ const InProgress = () => {
       <IngredientsInProgress />
       <InstructionsRecipe />
       <VideoRecipe />
+      <ButtonFinish />
     </div>
   )
 }

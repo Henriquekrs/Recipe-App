@@ -1,7 +1,9 @@
+import FavoriteRecipesCards from "@/components/FavoriteRecipesCard";
+
 const Favorites = () => {
   return (
     <div>
-      <h1>Favorites</h1>
+      <FavoriteRecipesCards />
     </div>
   )
 };
