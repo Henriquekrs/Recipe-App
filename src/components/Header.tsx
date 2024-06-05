@@ -12,9 +12,14 @@ const HeaderBar = () => {
     setPopupVisible(!popupVisible);
   };
 
+  const handleGoHome = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.location.href = '/meals';
+  };
+
   return (
     <header className={styles.container}>
-      <section>
+      <section onClick={ handleGoHome }>
         <Image src={Icone} alt='Icone app' />
         <Image src={Logo} alt='Logo app' />
       </section>
@@ -26,7 +31,7 @@ const HeaderBar = () => {
         <div className={styles.popupContent}>
           <div className={styles.option}><a href="/profile">Profile</a></div>
           <div className={styles.option}><a href="/done-recipes">Done Recipes</a></div>
-          <div className={styles.option}><a href="/favorite-recipes">Favorite Recipes</a></div>
+          <div className={styles.option}><a href="/favorites">Favorite Recipes</a></div>
           <div className={styles.closeButton} onClick={() => setPopupVisible(false)}>X</div>
         </div>
       </div>

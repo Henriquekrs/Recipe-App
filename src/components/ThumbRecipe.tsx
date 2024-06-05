@@ -1,5 +1,7 @@
 import { useGlobalContext } from "@/context/GlobalProvider";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import ButtonFavorited from "./ButtonFavorited";
 
 const ThumbRecipe = () => {
   const { filteredRecipe } = useGlobalContext();
@@ -14,6 +16,7 @@ const ThumbRecipe = () => {
         alt={`Image of ${filteredRecipe.strMeal || filteredRecipe.strDrink}`}
         />
         <h2>{filteredRecipe.strMeal || filteredRecipe.strDrink}</h2>
+        <ButtonFavorited />
     </div>
   )
 };
