@@ -3,6 +3,7 @@ import Icone from '@/assets/ícone Recipes app.svg';
 import Logo from '@/assets/logo Recipes app.svg';
 import styles from '@/styles/ContainerHeader.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const HeaderBar = () => {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -24,14 +25,14 @@ const HeaderBar = () => {
         <Image src={Logo} alt='Logo app' />
       </section>
       <section className={styles.section}>
-        <a href="" onClick={togglePopup}>Profile</a>
-        <a href="">Search</a>
+        <Link href="" onClick={togglePopup}>Profile</Link>
+        <Link href="">Search</Link>
       </section>
       <div className={`${styles.popup} ${popupVisible ? styles.popupVisible : ''}`}>
         <div className={styles.popupContent}>
-          <div className={styles.option}><a href="/profile">Profile</a></div>
-          <div className={styles.option}><a href="/done-recipes">Done Recipes</a></div>
-          <div className={styles.option}><a href="/favorites">Favorite Recipes</a></div>
+          <div className={styles.option}><Link href="/profile">Profile</Link></div>
+          <div className={styles.option}><Link href="/done-recipes">Done Recipes</Link></div>
+          <div className={styles.option}><Link href="/favorites">Favorite Recipes</Link></div>
           <div className={styles.closeButton} onClick={() => setPopupVisible(false)}>X</div>
         </div>
       </div>

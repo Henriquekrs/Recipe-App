@@ -1,10 +1,11 @@
 import styles from '@/styles/ContainerFooter.module.css';
+import Link from 'next/link';
 
 const FooterBar = () => {
   return (
     <div className={styles.container}>
-      <a href="/drinks">Drinks</a>
-      <a href="/meals">Meals</a>
+      <Link href="/drinks">Drinks</Link>
+      <Link href="/meals">Meals</Link>
     </div>
   )
 };

@@ -1,10 +1,18 @@
+import { useGlobalContext } from '@/context/GlobalProvider';
+import styles from '@/styles/ContainerProfile.module.css';
+import Link from 'next/link';
+
 const ProfileOptions = () => {
+  const { email } = useGlobalContext();
+  console.log(email, '<== email component');
+
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Profile</h1>
-      <a href="">Done Recipes</a>
-      <a href="">Favorite Recipes</a>
-      <a href="">Logout</a>
+      <h2>{ email }</h2>
+      <Link href="/done-recipes">Done Recipes</Link>
+      <Link href="/favorites">Favorite Recipes</Link>
+      <Link href="/login">Logout</Link>
     </div>
   )
 }
