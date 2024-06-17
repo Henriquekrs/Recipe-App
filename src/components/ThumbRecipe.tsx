@@ -1,24 +1,28 @@
-import { useGlobalContext } from "@/context/GlobalProvider";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import ButtonFavorited from "./ButtonFavorited";
+import React from 'react'
+import { useGlobalContext } from '@/context/GlobalProvider'
+import Image from 'next/image'
+import ButtonFavorited from './ButtonFavorited'
+import styles from '@/styles/ThumbnailDetails.module.css'
 
 const ThumbRecipe = () => {
-  const { filteredRecipe } = useGlobalContext();
- 
+  const { filteredRecipe } = useGlobalContext()
+
   return (
-    <div>
-      <h1>{filteredRecipe.strCategory}</h1>
+    <div className={styles.container}>
       <Image
-        width={200}
-        height={200}
+        width={500}
+        height={500}
         src={filteredRecipe.strMealThumb || filteredRecipe.strDrinkThumb}
         alt={`Image of ${filteredRecipe.strMeal || filteredRecipe.strDrink}`}
-        />
-        <h2>{filteredRecipe.strMeal || filteredRecipe.strDrink}</h2>
+      />
+      <div className={styles.overlay}></div>
+      <div>
         <ButtonFavorited />
+        <h1>{filteredRecipe.strCategory}</h1>
+        <h2>{filteredRecipe.strMeal || filteredRecipe.strDrink}</h2>
+      </div>
     </div>
   )
-};
+}
 
-export default ThumbRecipe;
+export default ThumbRecipe

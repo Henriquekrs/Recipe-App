@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 25vw;
+    height: 50vh;
+    gap: 1rem;
+    padding: 10px;
+
+    @media screen and (max-width: 768px) {
+        width: 95vw;
+    }
+}
+
+.container h2 {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 20.5px;
+    text-indent: 20px;
+}
+
+.container ul {
+    list-style-type: none;
+    width: 25vw;
+    height: 40vh;
+    border: 1px solid #B1B1B1;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 10px;
+
+    overflow-y: auto;
+    padding: 10px;
+    list-style: none;
+
+    @media screen and (max-width: 768px) {
+        width: 90vw;
+        height: 40vh;
+    }
+}
+
+.container ul::-webkit-scrollbar {
+    width: 8px;
+    /* Largura da barra de rolagem vertical */
+    height: 8px;
+    /* Altura da barra de rolagem horizontal */
+}
+
+.container ul::-webkit-scrollbar-thumb {
+    background-color: #e77205;
+    /* Cor do "polegar" da barra de rolagem */
+    border-radius: 4px;
+    /* Arredondar os cantos do "polegar" */
+}
+
+.container ul::-webkit-scrollbar-track {
+    background: #B1B1B1;
+    border-radius: 10px;
+    /* Cor do fundo da barra de rolagem */
+}
+
+.container ul li {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 14.35px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.container ul li label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container ul li input[type="checkbox"] {
+    appearance: none;
+    width: 25px;
+    /* Tamanho do checkbox */
+    height: 25px;
+    /* Tamanho do checkbox */
+    border: 2px solid var(--yellowDark);
+    border-radius: 4px;
+    /* Arredondar os cantos do checkbox */
+    margin-right: 10px;
+    /* Espaçamento entre o checkbox e o texto */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.container ul li input[type="checkbox"]:checked {
+    background-color: var(--yellowDark);
+}
+
+.container ul li input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 8px;
+    width: 5px;
+    height: 10px;
+    border: solid #FFFFFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}

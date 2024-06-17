@@ -1,54 +1,78 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import styles from "@/styles/ContainerDoneRecipes.module.css";
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import styles from '@/styles/ContainerDoneRecipes.module.css'
+import allFoods from '@/assets/All.svg'
+import allMeals from '@/assets/AllMeal.svg'
+import allDrinks from '@/assets/AllDrink.svg'
+import { useRouter } from 'next/router'
 
 export type DoneOrFavoritesRecipesType = {
-  id: string;
-  type: string;
-  category: string;
-  name: string;
-  image: string;
+  id: string
+  type: string
+  category: string
+  name: string
+  image: string
 }
 
 const FavoriteRecipesCards = () => {
-  const [favoriteRecipes, setfavoriteRecipes] = useState<DoneOrFavoritesRecipesType[]>([]);
-  const [originalfavoriteRecipes, setOriginalfavoriteRecipes] = useState<DoneOrFavoritesRecipesType[]>([]);
+  const router = useRouter()
+  const IsMealPage = router.pathname.includes('done-recipes')
+  const [favoriteRecipes, setfavoriteRecipes] = useState<
+    DoneOrFavoritesRecipesType[]
+  >([])
+  const [originalfavoriteRecipes, setOriginalfavoriteRecipes] = useState<
+    DoneOrFavoritesRecipesType[]
+  >([])
 
   useEffect(() => {
-    const storedfavoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes') || '[]');
-    setfavoriteRecipes(storedfavoriteRecipes);
-    setOriginalfavoriteRecipes(storedfavoriteRecipes);
-  }, []);
+    const storedfavoriteRecipes = JSON.parse(
+      localStorage.getItem('favoriteRecipes') || '[]',
+    )
+    setfavoriteRecipes(storedfavoriteRecipes)
+    setOriginalfavoriteRecipes(storedfavoriteRecipes)
+  }, [])
 
   const filterTypes = (type: string) => {
     if (type === 'all') {
-      setfavoriteRecipes(originalfavoriteRecipes);
-      return;
+      setfavoriteRecipes(originalfavoriteRecipes)
+      return
     }
-    const filteredRecipes = originalfavoriteRecipes.filter((recipe: DoneOrFavoritesRecipesType) => recipe.type === type);
-    setfavoriteRecipes(filteredRecipes);
-  };
+    const filteredRecipes = originalfavoriteRecipes.filter(
+      (recipe: DoneOrFavoritesRecipesType) => recipe.type === type,
+    )
+    setfavoriteRecipes(filteredRecipes)
+  }
 
   return (
     <div className={styles.container}>
-      <h1>
-        Done Recipes
-      </h1>
-      <div>
-        <button
-          onClick={() => filterTypes('all')}
-        >
-          All
+      <h1>{IsMealPage ? 'done-recipes' : 'favorites'}</h1>
+      <div className={styles.button}>
+        <button onClick={() => filterTypes('all')}>
+          <Image
+            width={50}
+            height={50}
+            src={allFoods}
+            alt={'Image of allFoods'}
+          />
+          <p>All</p>
         </button>
-        <button
-          onClick={() => filterTypes('meals')}
-        >
-          Foods
+        <button onClick={() => filterTypes('meals')}>
+          <Image
+            width={50}
+            height={50}
+            src={allMeals}
+            alt={'Image of allMeals'}
+          />
+          <p>Foods</p>
         </button>
-        <button
-          onClick={() => filterTypes('drinks')}
-        >
-          Drinks
+        <button onClick={() => filterTypes('drinks')}>
+          <Image
+            width={50}
+            height={50}
+            src={allDrinks}
+            alt={'Image of allDrinks'}
+          />
+          <p>Drinks</p>
         </button>
       </div>
       <div>
@@ -60,14 +84,15 @@ const FavoriteRecipesCards = () => {
               width={100}
               height={100}
             />
-            <p>{recipe.name}</p>
-            <p>{recipe.category}</p>
-            <p>{recipe.type}</p>
+            <div>
+              <h1>{recipe.name}</h1>
+              <p>{recipe.category}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FavoriteRecipesCards;
+export default FavoriteRecipesCards

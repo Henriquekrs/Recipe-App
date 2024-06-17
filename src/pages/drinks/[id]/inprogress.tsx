@@ -1,25 +1,26 @@
-import ButtonFinish from "@/components/ButtonFinish";
-import IngredientsInProgress from "@/components/IngredientsInProgress";
-import InstructionsRecipe from "@/components/InstructionsRecipe";
-import ThumbRecipe from "@/components/ThumbRecipe";
-import VideoRecipe from "@/components/VideoRecipe";
-import { useGlobalContext } from "@/context/GlobalProvider";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import ButtonFinish from '@/components/ButtonFinish'
+import IngredientsInProgress from '@/components/IngredientsInProgress'
+import InstructionsRecipe from '@/components/InstructionsRecipe'
+import ThumbRecipe from '@/components/ThumbRecipe'
+import VideoRecipe from '@/components/VideoRecipe'
+import { useGlobalContext } from '@/context/GlobalProvider'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
+import styles from '@/styles/StylesPageInProgress.module.css'
 
 const InProgress = () => {
-  const router = useRouter();
-  const { getDetailsRecipe } = useGlobalContext();
-  const { id } = router.query;
+  const router = useRouter()
+  const { getDetailsRecipe } = useGlobalContext()
+  const { id } = router.query
 
   useEffect(() => {
-    if(id) {
-      getDetailsRecipe(false, id as string);
+    if (id) {
+      getDetailsRecipe(false, id as string)
     }
-  }, [id]);
+  }, [id])
 
   return (
-    <div>
+    <div className={styles.container}>
       <ThumbRecipe />
       <IngredientsInProgress />
       <InstructionsRecipe />
@@ -29,4 +30,4 @@ const InProgress = () => {
   )
 }
 
-export default InProgress;
+export default InProgress

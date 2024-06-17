@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    width: 38vw;
+    height: 46vh;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    text-indent: 20px;
+
+    @media screen and (max-width: 768px) {
+        width: 90vw;
+        height: 50vh;
+    }
+}
+
+.container h1 {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 20.5px;
+}
+
+.container ul {
+    display: flex;
+    width: 30vw;
+    height: 35vh;
+    border: 1px solid #B1B1B1;
+    flex-direction: column;
+    position: relative;
+    padding: 10px 40px;
+    overflow-y: scroll;
+    border-radius: 10px;
+
+    @media screen and (max-width: 768px) {
+        width: 65vw;
+        height: 40vh;
+    }
+}
+
+.container ul li {
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 14.35px;
+    text-align: left;
+    color: #1A1B1C;
+}
+
+.container ul::-webkit-scrollbar {
+    width: 8px;
+    /* Largura da barra de rolagem vertical */
+    height: 8px;
+    /* Altura da barra de rolagem horizontal */
+}
+
+.container ul::-webkit-scrollbar-thumb {
+    background-color: #e77205;
+    /* Cor do "polegar" da barra de rolagem */
+    border-radius: 4px;
+    /* Arredondar os cantos do "polegar" */
+}
+
+.container ul::-webkit-scrollbar-track {
+    background: #B1B1B1;
+    border-radius: 10px;
+    /* Cor do fundo da barra de rolagem */
+}

@@ -1,6 +1,6 @@
-import { createContext } from 'react';
-import { GlobalContextType } from './GlobalProvider';
+import { createContext } from 'react'
+import { GlobalContextType } from './GlobalProvider'
 
-const GlobalContext = createContext({} as GlobalContextType);
+const GlobalContext = createContext({} as GlobalContextType)
 
-export default GlobalContext;
+export default GlobalContext

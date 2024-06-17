@@ -1,11 +1,13 @@
-import FavoriteRecipesCards from "@/components/FavoriteRecipesCard";
+import React from 'react'
+import FavoriteRecipesCards from '@/components/FavoriteRecipesCard'
+import styles from '@/styles/StylesPageDoneAndFavorite.module.css'
 
 const Favorites = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <FavoriteRecipesCards />
     </div>
   )
-};
+}
 
-export default Favorites;
+export default Favorites

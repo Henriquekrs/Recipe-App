@@ -1,14 +1,16 @@
-import { useGlobalContext } from "@/context/GlobalProvider";
+import React from 'react'
+import { useGlobalContext } from '@/context/GlobalProvider'
+import styles from '@/styles/ContainerInstruction.module.css'
 
 const InstructionsRecipe = () => {
-  const { filteredRecipe } = useGlobalContext();
+  const { filteredRecipe } = useGlobalContext()
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Instructions</h1>
       <p>{filteredRecipe.strInstructions}</p>
     </div>
   )
-};
+}
 
-export default InstructionsRecipe;
+export default InstructionsRecipe

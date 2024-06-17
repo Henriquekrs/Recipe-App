@@ -1,9 +1,22 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    border: 2px solid #e77205;
-    align-items: center;
+    width: 90vw;
+    height: 40vh;
+    gap: 1.5rem;
+    align-items: flex-start;
+
+    @media screen and (max-width: 768px) {
+        width: 100vw;
+        height: 40vh;
+    }
+}
+
+.container h1 {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 20.5px;
+    text-indent: 20px;
 }
 
 .carousel {
@@ -35,6 +48,12 @@
     flex: 0 0 auto;
     cursor: pointer;
     transition: transform 0.2s;
+}
+
+.carouselItem button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .carouselItem:hover {

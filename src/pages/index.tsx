@@ -1,16 +1,16 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps } from 'next'
 
 const Home = () => {
-  return null;
-};
+  return null
+}
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
       destination: '/login',
       permanent: false,
     },
-  };
-};
+  }
+}
 
-export default Home;
+export default Home

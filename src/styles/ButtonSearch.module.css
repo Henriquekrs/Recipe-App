@@ -1,0 +1,12 @@
+.container {
+    height: 10vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container img {
+    height: 45px;
+    width: 45px;
+}

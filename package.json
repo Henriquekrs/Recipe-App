@@ -6,26 +6,35 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx,.ts,.tsx",
-    "lint:styles": "npx stylelint '**/*.css'"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "lint:styles": "stylelint '**/*.css' --fix"
   },
   "dependencies": {
-    "next": "14.2.3",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^14.2.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "sweetalert2": "^11.11.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^9.4.0",
-    "eslint-config-next": "14.2.3",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.2.3",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "globals": "^15.3.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5",
-    "typescript-eslint": "^7.12.0"
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-simple-import-sort": "^9.0.0",
+    "globals": "^15.4.0",
+    "prettier": "^3.0.0",
+    "stylelint": "^14.0.0",
+    "stylelint-config-standard": "^24.0.0",
+    "typescript": "^5.0.0"
   }
 }

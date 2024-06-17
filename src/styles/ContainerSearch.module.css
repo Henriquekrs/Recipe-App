@@ -1,19 +1,60 @@
 .container {
     display: flex;
-    width: 100vw;
-    height: 20vh;
-    justify-content: center;
-    border: 1px solid #00c4c7;
+    width: 371px;
+    gap: 1.5rem;
+    height: 22vh;
+    justify-content: flex-start;
+    border: none;
+    background-color: var(--purpleFooter);
     position: relative;
-    top: 10vh;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+}
+
+.container div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: #FFFFFF;
 }
 
 .searchBar {
-    width: 338px;
-    height: 40px;
-    border-radius: 5px;
+    width: 370px;
+    height: 45px;
+    font-size: 15px;
+    border-radius: 10px;
     border: 1px solid #B1B1B1;
-    padding: 8px 20px;
+    text-indent: 25px;
+}
+
+.searchBar:focus {
+    outline: none;
+    border: 1px solid var(--yellowDark);
+}
+
+.searchBar::placeholder {
+    font-family: Epilogue;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 14.35px;
+    text-align: left;
+    text-indent: 25px;
+}
+
+.searchButton {
+    width: 240px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--yellowDark);
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 12.3px;
+    letter-spacing: 0.03em;
+    text-align: center;
 }

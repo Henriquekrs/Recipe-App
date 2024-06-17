@@ -1,36 +1,38 @@
-import { useGlobalContext } from "@/context/GlobalProvider";
-import Image from "next/image";
-import { useEffect } from "react";
-import styles from '@/styles/ContaineRecommendations.module.css';
-import { useRouter } from "next/router";
+import React, { useEffect } from 'react'
+import { useGlobalContext } from '@/context/GlobalProvider'
+import Image from 'next/image'
+import styles from '@/styles/ContaineRecommendations.module.css'
+import { useRouter } from 'next/router'
 
 const RecommendedRecipes = () => {
-  const router = useRouter();
-  const { getMeals, getDrinks, recipes } = useGlobalContext();
-  
+  const router = useRouter()
+  const { getMeals, getDrinks, recipes } = useGlobalContext()
+
   useEffect(() => {
     if (router.pathname.includes('meals')) {
-      getDrinks('');
+      getDrinks('')
     } else if (router.pathname.includes('drinks')) {
-      getMeals('');
+      getMeals('')
     }
-  }, []);
+  }, [])
 
   const handleClickRecipe = (recipeId: string) => {
     if (router.pathname.includes('meals')) {
-      router.push(`/drinks/${recipeId}`);
+      router.push(`/drinks/${recipeId}`)
     } else if (router.pathname.includes('drinks')) {
-      router.push(`/meals/${recipeId}`);
+      router.push(`/meals/${recipeId}`)
     }
-  };
+  }
 
   return (
     <div className={styles.container}>
       <h1>Recommended</h1>
       <ul className={styles.carousel}>
-        {recipes.slice(0, 6).map((recipe, index) => (
+        {recipes.slice(0, 10).map((recipe, index) => (
           <li key={index} className={styles.carouselItem}>
-            <div onClick={() => handleClickRecipe(recipe.idMeal || recipe.idDrink)}>
+            <button
+              onClick={() => handleClickRecipe(recipe.idMeal || recipe.idDrink)}
+            >
               <Image
                 width={200}
                 height={200}
@@ -38,12 +40,12 @@ const RecommendedRecipes = () => {
                 alt={`Image of ${recipe.strMeal || recipe.strDrink}`}
               />
               <p>{recipe.strMeal || recipe.strDrink}</p>
-            </div>
+            </button>
           </li>
         ))}
       </ul>
     </div>
   )
-};
+}
 
-export default RecommendedRecipes;
+export default RecommendedRecipes
