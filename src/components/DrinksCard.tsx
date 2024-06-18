@@ -20,23 +20,12 @@ const DrinksCards = () => {
     router.push(`${router.pathname}/${recipeId}`)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent, recipeId: string) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleClickRecipe(recipeId)
-    }
-  }
-
   return (
     <div className={styles.container}>
       <ul>
         {recipes.map((recipe, index) => (
           <li key={index}>
-            <div
-              onClick={() => handleClickRecipe(recipe.idDrink)}
-              onKeyDown={(event) => handleKeyDown(event, recipe.idDrink)}
-              role="button"
-              tabIndex={0}
-            >
+            <button onClick={() => handleClickRecipe(recipe.idDrink)}>
               <Image
                 width={150}
                 height={150}
@@ -44,7 +33,7 @@ const DrinksCards = () => {
                 alt={`Image of ${recipe.strDrink}`}
               />
               <h1>{recipe.strDrink}</h1>
-            </div>
+            </button>
           </li>
         ))}
       </ul>

@@ -5,14 +5,7 @@ import allFoods from '@/assets/All.svg'
 import allMeals from '@/assets/AllMeal.svg'
 import allDrinks from '@/assets/AllDrink.svg'
 import { useRouter } from 'next/router'
-
-export type DoneOrFavoritesRecipesType = {
-  id: string
-  type: string
-  category: string
-  name: string
-  image: string
-}
+import { DoneOrFavoritesRecipesType } from '@/types/doneOrFavoriteCardsType'
 
 const DoneRecipesCards = () => {
   const router = useRouter()

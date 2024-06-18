@@ -8,20 +8,22 @@ import breakfast from '@/assets/Breakfast.svg'
 import dessert from '@/assets/Dessert.svg'
 import styles from '@/styles/ContainerFilter.module.css'
 import { useGlobalContext } from '@/context/GlobalProvider'
+import { manageFilterSelection } from '@/utils/filterMealsHandler'
 
 const FiltersMeals = () => {
   const { getFilteredRecipe, getMeals } = useGlobalContext()
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
 
   const handleClickFilter = (e: string) => {
-    if (activeFilter === e) {
-      setActiveFilter(null)
-      getMeals('')
-    } else {
-      setActiveFilter(e)
-      getFilteredRecipe(true, e)
-    }
+    manageFilterSelection(
+      activeFilter,
+      e,
+      setActiveFilter,
+      getMeals,
+      getFilteredRecipe,
+    )
   }
+
   return (
     <div className={styles.container}>
       <ul>

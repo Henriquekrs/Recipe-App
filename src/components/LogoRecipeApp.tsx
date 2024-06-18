@@ -5,13 +5,13 @@ import Logo from '@/assets/logo Recipes app.svg'
 import styles from '@/styles/LogoRecipeApp.module.css'
 
 const LogoRecipeApp = () => {
-  const handleGoHome = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleGoHome = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     window.location.href = '/meals'
   }
 
   return (
-    <button onClick={() => handleGoHome} className={styles.container}>
+    <button onClick={(e) => handleGoHome(e)} className={styles.container}>
       <Image src={Icone} alt="Icone app" />
       <Image src={Logo} alt="Logo app" />
     </button>

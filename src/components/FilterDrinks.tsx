@@ -8,20 +8,19 @@ import Other from '@/assets/Other.svg'
 import Cocoa from '@/assets/Cocoa.svg'
 import styles from '@/styles/ContainerFilter.module.css'
 import { useGlobalContext } from '@/context/GlobalProvider'
+import { createHandleClickFilter } from '@/utils/filterDrinksHandler'
 
 const FilterDrinks = () => {
   const { getFilteredRecipe, getDrinks } = useGlobalContext()
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
 
-  const handleClickFilter = (e: string) => {
-    if (activeFilter === e) {
-      setActiveFilter(null)
-      getDrinks('')
-    } else {
-      setActiveFilter(e)
-      getFilteredRecipe(false, e)
-    }
-  }
+  const handleClickFilter = createHandleClickFilter(
+    activeFilter,
+    setActiveFilter,
+    getDrinks,
+    getFilteredRecipe,
+  )
+
   return (
     <div className={styles.container}>
       <ul>

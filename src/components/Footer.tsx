@@ -7,16 +7,23 @@ import { useRouter } from 'next/router'
 
 const FooterBar = () => {
   const router = useRouter()
-  const isMealsPage = router.pathname.includes('meals')
 
-  const handleClickNavigate = () => {
-    isMealsPage ? router.push('/drinks') : router.push('/meals')
+  const handleClickNavigate = (param: boolean) => {
+    param ? router.push('/drinks') : router.push('/meals')
   }
 
   return (
     <div className={styles.container}>
-      <Image src={drink} onClick={handleClickNavigate} alt="Redirect drinks" />
-      <Image src={meal} onClick={handleClickNavigate} alt="Redirect meals" />
+      <Image
+        src={drink}
+        onClick={() => handleClickNavigate(true)}
+        alt="Redirect drinks"
+      />
+      <Image
+        src={meal}
+        onClick={() => handleClickNavigate(false)}
+        alt="Redirect meals"
+      />
     </div>
   )
 }
