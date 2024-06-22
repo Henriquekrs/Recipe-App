@@ -1,11 +1,11 @@
 import React from 'react';
 import { useGlobalContext } from '@/context/GlobalProvider';
 import { validateEmail, validatePassword } from '@/utils/LoginFunctions';
-import styles from '@/styles/LoginForm.module.css';
+import styles from '../styles/LoginForm.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import logoApp from '@/assets/LogoAppRecipes.svg';
-import tomato from '@/assets/tomate.svg';
+import logoApp from '../assets/LogoAppRecipes.svg';
+import tomato from '../assets/tomate.svg';
 import { showAlert } from '@/utils/alertHandler';
 
 const LoginForm = () => {
