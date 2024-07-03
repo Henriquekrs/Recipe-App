@@ -19,7 +19,7 @@
     position: relative;
     height: 15vw;
     width: 15vw;
-    border: 2px solid #B1B1B1;
+    border: none;
     flex-direction: column;
     border-radius: 5px;
     cursor: pointer;

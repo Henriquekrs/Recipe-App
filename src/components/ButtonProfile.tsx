@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import styles from '@/styles/ButtonProfile.module.css'
-import Image from 'next/image'
-import Link from 'next/link'
-import IconProfile from '@/assets/icone-perfil.svg'
+import React, { useState } from 'react';
+import styles from '@/styles/ButtonProfile.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import IconProfile from '@/assets/icone-perfil.svg';
 
 const ButtonProfile = () => {
-  const [popupVisible, setPopupVisible] = useState(false)
+  const [popupVisible, setPopupVisible] = useState(false);
 
   const togglePopup = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation()
-    setPopupVisible(!popupVisible)
-  }
+    event.stopPropagation();
+    setPopupVisible(!popupVisible);
+  };
 
   return (
     <>
@@ -39,12 +39,12 @@ const ButtonProfile = () => {
             className={styles.closeButton}
             onClick={() => setPopupVisible(false)}
           >
-            X
+            Close
           </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ButtonProfile
+export default ButtonProfile;

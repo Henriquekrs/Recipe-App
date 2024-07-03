@@ -47,7 +47,6 @@ const GlobalProvider = ({ children }: ProviderPropsType) => {
   const [filteredRecipe, setFilteredRecipe] = useState<
     FoodRecipe | DrinkRecipe
   >(Object);
-  console.log(filteredRecipe);
 
   const getMeals = async (name: string) => {
     const data = await fetchMeals(name);
