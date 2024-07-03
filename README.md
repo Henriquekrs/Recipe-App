@@ -22,7 +22,7 @@ Este projeto foi baseado em um projeto desenvolvido durante minha formação no 
 
 ### Exemplos de uso
 
-- Para fazer o login, insira um email de teste seguindo a seguinte estrutura => (teste@teste.com) A senha deve conter 6 ou mais caracteres, sendo um maiúsculo e um numero.
+- Para fazer o login, insira um email de teste seguindo a seguinte estrutura: (teste@teste.com). A senha deve conter 6 ou mais caracteres, sendo um maiúsculo e um numero.
 - Para adicionar uma receita aos favoritos clique no botão de favoritar no canto superior direito.
 - Para filtrar por categoria clique no botão correspondente a categoria desejada.
 - Para filtrar por nome, ingrediente ou primeira letra, digite no input e clique no botão "Search".
