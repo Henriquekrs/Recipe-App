@@ -1,15 +1,15 @@
-import React from 'react'
-import { useGlobalContext } from '@/context/GlobalProvider'
-import { useRouter } from 'next/router'
-import favorite from '@/assets/Favorite.svg'
-import Image from 'next/image'
-import { handleSaveFavoriteRecipes } from '@/utils/favoriteRecipesHandler'
+import React from 'react';
+import { useGlobalContext } from '@/context/GlobalProvider';
+import { useRouter } from 'next/router';
+import favorite from '@/assets/Favorite.svg';
+import Image from 'next/image';
+import { handleSaveFavoriteRecipes } from '@/utils/favoriteRecipesHandler';
 
 function ButtonFavorited() {
-  const router = useRouter()
-  const { filteredRecipe } = useGlobalContext()
-  const { id } = router.query
-  const isMealRoute = router.pathname.includes('meals')
+  const router = useRouter();
+  const { filteredRecipe } = useGlobalContext();
+  const { id } = router.query;
+  const isMealRoute = router.pathname.includes('meals');
 
   return (
     <Image
@@ -21,7 +21,7 @@ function ButtonFavorited() {
         handleSaveFavoriteRecipes(id as string, isMealRoute, filteredRecipe)
       }
     />
-  )
+  );
 }
 
-export default ButtonFavorited
+export default ButtonFavorited;

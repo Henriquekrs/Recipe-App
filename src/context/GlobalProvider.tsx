@@ -33,7 +33,7 @@ export type GlobalContextType = {
   setRecipes: (recipes: FoodRecipe[] | DrinkRecipe[]) => void;
   getMeals: (name: string) => void;
   getDrinks: (name: string) => void;
-  filteredRecipe: FoodRecipe | DrinkRecipe;
+  filteredRecipe: any;
   getDetailsRecipe: (isMeal: boolean, id: string) => Promise<void>;
   getFilteredRecipe: (isMeal: boolean, idFilter: string) => Promise<void>;
   getByIngredients: (isMeal: boolean, ingredient: string) => Promise<void>;
