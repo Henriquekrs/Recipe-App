@@ -31,9 +31,9 @@ Este projeto foi baseado em um projeto desenvolvido durante minha formação no 
 ### Pré-requisitos
 
 
-- **Node.js** (versão X.X.X)
-- **npm** (versão X.X.X)
-- **Docker** (versão X.X.X)
+- **Node.js** (versão 18.3.1 ou superior)
+- **npm** (versão 10.8.1)
+- **Docker** (versão 27.0.3)
 
 
 ### Instalação
