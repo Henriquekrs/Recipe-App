@@ -1,4 +1,4 @@
-# TrybeWallet
+# Recipe App
 
 
 ## Do que se trata esse projeto
